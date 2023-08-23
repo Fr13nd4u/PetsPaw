@@ -1,11 +1,14 @@
 import "./styles/globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Jost } from "next/font/google";
 import MainNavigation from "./components/main-navigation";
 
 import { Providers } from "./providers";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Jost({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 export const metadata: Metadata = {
   title: "Pets Paw",
@@ -23,7 +26,7 @@ export default function RootLayout({
         <Providers>
           <main>
             <MainNavigation />
-            {children}
+            <section>{children}</section>
           </main>
         </Providers>
       </body>
