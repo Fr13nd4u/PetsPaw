@@ -1,0 +1,21 @@
+/* Light mode theme  */
+:root {
+  --primary: #FF868E;
+
+  --text-primary: #1D1D1D;
+  --background-primary: #F8F8F7;
+  --background-secondary: #FBE0DC;
+
+  --input-background: #fff;
+}
+
+/* Dark mode theme  */
+[data-theme='dark'] {
+  --primary: #FF868E;
+
+  --text-primary: #fff;
+  --background-primary: #1D1D1D;
+  --background-secondary: rgba(255, 255, 255, 0.05);
+
+  --input-background: rgba(255, 255, 255, 0.05);
+} 

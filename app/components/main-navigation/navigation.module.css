@@ -1,0 +1,36 @@
+.nav {
+  width: 446px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-primary)
+}
+
+.logo svg path {
+  fill: var(--text-primary)
+}
+
+.switch_box {
+  display: flex;
+  gap: 5px;
+}
+
+.theme_icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50px;
+  background: var(--input-background);
+}
