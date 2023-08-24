@@ -4,6 +4,8 @@
   border-radius: 20px;
   padding: 20px;
   background: var(--input-background);
+  overflow: hidden;
+  overflow-y: auto;
 }
 
 .breeds_option {

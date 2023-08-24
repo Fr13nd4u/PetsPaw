@@ -32,6 +32,18 @@ const MasonryGallery: React.FC<IMasonryGallery> = ({ children }) => {
   const itemCount = React.Children.count(children);
   const blocks = Math.ceil(itemCount / gridMapping.length);
 
+  // Calculate the grid template rows based on the number of items
+  let gridTemplateRows: string;
+  if (itemCount <= 5) {
+    gridTemplateRows = "repeat(9, 1fr)";
+  } else if (itemCount <= 10) {
+    gridTemplateRows = "repeat(6, 1fr)";
+  } else if (itemCount <= 15) {
+    gridTemplateRows = "repeat(9, 1fr)";
+  } else {
+    gridTemplateRows = "repeat(9, 1fr)";
+  }
+
   const renderItems = (start: number, end: number) =>
     React.Children.toArray(children)
       .slice(start, end)
@@ -48,7 +60,11 @@ const MasonryGallery: React.FC<IMasonryGallery> = ({ children }) => {
   return (
     <>
       {Array.from({ length: blocks }, (_, blockIndex) => (
-        <div key={blockIndex} className={styles.parent}>
+        <div
+          key={blockIndex}
+          className={styles.parent}
+          style={{ gridTemplateRows }}
+        >
           {renderItems(
             blockIndex * gridMapping.length,
             (blockIndex + 1) * gridMapping.length
