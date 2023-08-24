@@ -12,6 +12,8 @@
   --input-background: #fff;
 
   --card-background: rgba(255, 134, 142, 0.60);
+  --card-border: #FBE0DC;
+  --card-breed-title: #fff;
 }
 
 /* Dark mode theme  */
@@ -28,4 +30,6 @@
   --input-background: rgba(255, 255, 255, 0.05);
 
   --card-background: rgba(255, 134, 142, 0.60);
+  --card-border: rgba(255, 134, 142, 0.20);
+  --card-breed-title: #282828;
 } 

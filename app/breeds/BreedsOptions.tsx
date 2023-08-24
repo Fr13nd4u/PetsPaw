@@ -37,7 +37,7 @@ const BreedsOptions: React.FC<IBreedsOptions> = ({ breeds }) => {
       value: "all",
       label: "All breeds",
     },
-    ...breeds.map((cat: any) => {
+    ...breeds?.map((cat: any) => {
       return {
         value: cat.id,
         label: cat.name,
