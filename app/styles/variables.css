@@ -10,6 +10,8 @@
   --btn-color: #8C8C8C;
   --input-color: #8C8C8C;
   --input-background: #fff;
+
+  --card-background: rgba(255, 134, 142, 0.60);
 }
 
 /* Dark mode theme  */
@@ -24,4 +26,6 @@
   --btn-color: #FF868E;
   --input-color: #fff;
   --input-background: rgba(255, 255, 255, 0.05);
+
+  --card-background: rgba(255, 134, 142, 0.60);
 } 

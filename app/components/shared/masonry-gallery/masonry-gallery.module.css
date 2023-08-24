@@ -8,8 +8,9 @@
 }
 
 .item {
+  min-height: 140px;
   border-radius: 20px;
-  background-color: lightgray;
-  border: 1px solid gray;
+  overflow: hidden;
+  position: sticky;
 }
 

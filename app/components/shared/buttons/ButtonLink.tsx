@@ -5,8 +5,8 @@ interface IButton {
   onClick?: () => void;
 }
 
-const PrimaryBtn: React.FC<IButton> = ({ children }) => {
+const ButtonLink: React.FC<IButton> = ({ children }) => {
   return <button>{children}</button>;
 };
 
-export default PrimaryBtn;
+export default ButtonLink;
