@@ -5,3 +5,7 @@
   padding: 20px;
   background: var(--input-background);
 }
+
+.breeds_select {
+  width: 226px;
+}
