@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Jost } from "next/font/google";
 import MainNavigation from "./components/main-navigation";
 
+import { Providers as ReduxProvider } from "./redux/provider";
 import { Providers } from "./providers";
 
 const inter = Jost({
@@ -26,7 +27,10 @@ export default function RootLayout({
         <Providers>
           <main>
             <MainNavigation />
-            <section>{children}</section>
+
+            <section>
+              <ReduxProvider>{children}</ReduxProvider>
+            </section>
           </main>
         </Providers>
       </body>

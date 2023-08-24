@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./inputs.module.css";
 
 interface SelectInputProps<T> {
   options: { value: T; label: string }[];

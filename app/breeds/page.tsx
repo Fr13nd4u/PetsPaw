@@ -1,6 +1,10 @@
+"use client";
 import React from "react";
 import MasonryGallery from "../components/shared/masonry-gallery/MasonryGallery";
 import BreedsOptions from "./BreedsOptions";
+
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../redux/store";
 
 import styles from "./breeds.module.css";
 
@@ -10,15 +14,30 @@ const arr = [
 ];
 
 const Breeds: React.FC = () => {
+  const { breeds, loading, error } = useSelector(
+    (state: RootState) => state.breeds
+  );
+
+  const Gallery = () => {
+    if (loading) {
+      return <h4>Loading</h4>;
+    } else if (error) {
+      return <div>{error}</div>;
+    } else {
+      return (
+        <MasonryGallery>
+          {breeds.map((cat: any) => (
+            <div key={cat.id}>cat: {cat.name}</div>
+          ))}
+        </MasonryGallery>
+      );
+    }
+  };
+
   return (
     <div className={styles.page}>
-      <h2>Breeds</h2>
-      <BreedsOptions />
-      {/* <MasonryGallery>
-        {arr.map((item, index) => (
-          <div key={index}>item: {item}</div>
-        ))}
-      </MasonryGallery> */}
+      <BreedsOptions breeds={breeds} />
+      <Gallery />
     </div>
   );
 };
