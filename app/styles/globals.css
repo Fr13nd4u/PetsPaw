@@ -29,8 +29,20 @@ main {
   gap: 137px;
 }
 
+input, select {
+  border: none;
+  outline: none;
+}
 
-
+select, option {
+  border-radius: 10px;
+  background: var(--background-primary);
+  color: var(--input-color);
+  font-size: 16px;
+  line-height: 24px;
+  padding: 8px 10px;
+  border-right: 10px solid transparent;
+}
 
 section {
   width: 680px;

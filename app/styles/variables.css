@@ -7,6 +7,7 @@
   --background-primary: #F8F8F7;
   --background-secondary: #FBE0DC;
 
+  --input-color: #8C8C8C;
   --input-background: #fff;
 }
 
@@ -19,5 +20,6 @@
   --background-primary: #1D1D1D;
   --background-secondary: rgba(255, 255, 255, 0.05);
 
+  --input-color: #fff;
   --input-background: rgba(255, 255, 255, 0.05);
 } 
