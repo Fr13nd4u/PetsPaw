@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useTheme } from "next-themes";
-import Switch from "../shared/Switch";
+import Switch from "../shared/switch/Switch";
 
 import styles from "./navigation.module.css";
 

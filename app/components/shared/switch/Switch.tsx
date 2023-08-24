@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./shared.module.css";
+import styles from "./switch.module.css";
 
 interface ISwitch {
   id: string;
