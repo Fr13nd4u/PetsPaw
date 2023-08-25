@@ -1,23 +1,22 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import React from "react";
 import SelectInput from "../components/shared/inputs/SelectInput";
-
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../redux/store";
-
-import styles from "./breeds.module.css";
-import { fetchBreeds } from "../redux/slices/breeds";
 import Breadcrumbs from "../components/breadcrumbs";
 
-interface IBreedsOptions {
-  breeds: any;
-}
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../redux/store";
 
-const BreedsOptions: React.FC<IBreedsOptions> = ({ breeds }) => {
+import { fetchBreeds } from "../redux/slices/breeds";
+import { fetchGallery } from "../redux/slices/gallery";
+import styles from "./breeds.module.css";
+
+const BreedsOptions: React.FC = () => {
+  const { breeds } = useSelector((state: RootState) => state.breeds);
   const dispatch = useDispatch<AppDispatch>();
 
   const [limitOption, setLimitOption] = React.useState<number>(10);
-  const [breedOption, setBreedOption] = React.useState<string>("all");
+  const [breedOption, setBreedOption] = React.useState<string>("");
 
   const handleLimitChange = (value: number) => {
     setLimitOption(value);
@@ -28,13 +27,23 @@ const BreedsOptions: React.FC<IBreedsOptions> = ({ breeds }) => {
   };
 
   React.useEffect(() => {
-    dispatch(fetchBreeds(limitOption));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [limitOption]);
+    dispatch(
+      fetchGallery({
+        id: breedOption,
+        limit: limitOption,
+        order: "RAND",
+        mime_types: "jpg,gif,png",
+      })
+    );
+  }, [limitOption, breedOption]);
+
+  React.useEffect(() => {
+    dispatch(fetchBreeds("all"));
+  }, []);
 
   const newBreeds = [
     {
-      value: "all",
+      value: "",
       label: "All breeds",
     },
     ...breeds?.map((cat: any) => {

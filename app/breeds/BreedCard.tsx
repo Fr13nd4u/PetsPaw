@@ -8,19 +8,21 @@ interface IBreedCard {
 }
 
 const BreedCard: React.FC<IBreedCard> = ({ cat }) => {
-  const { name, image, id } = cat;
+  const { url, width, height } = cat;
   return (
-    <Link href={`breeds/${id}`} className={styles.cat_card}>
+    <Link href={`breeds/${cat?.breeds[0]?.id}`} className={styles.cat_card}>
       <Image
-        src={image.url}
-        alt={name}
-        width={image.width}
-        height={image.height}
+        src={url}
+        alt={cat?.breeds[0]?.name}
+        width={width}
+        height={height}
       />
 
-      <div className={styles.cat_card_info}>
-        <p className={styles.card_btn}>{name}</p>
-      </div>
+      {cat.breeds[0]?.name && (
+        <div className={styles.cat_card_info}>
+          <p className={styles.card_btn}>{cat?.breeds[0]?.name}</p>
+        </div>
+      )}
     </Link>
   );
 };
