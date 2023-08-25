@@ -8,6 +8,13 @@
   overflow-y: auto;
 }
 
+.cat_img {
+  width: 640px;
+  height: 360px;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+
 .cat_info {
   margin-top: 25px;
   border-radius: 20px;

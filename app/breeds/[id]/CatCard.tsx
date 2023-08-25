@@ -11,45 +11,47 @@ const CatCard: React.FC = () => {
     (state: RootState) => state.breed
   );
 
-  console.log("breed: ", breed);
-
-  if (loading) {
+  if (loading || !breed) {
     return <h4>Loading</h4>;
   } else if (error) {
     return <div>{error}</div>;
-  } else {
+  } else if (breed) {
+    const firstBreed = breed[0];
+
+    const { name, description, temperament, origin, weight, life_span } =
+      firstBreed.breeds[0];
+
     return (
       <>
-        {breed && (
-          <Image
-            src={"/" + breed.reference_image_id}
-            alt={breed.name}
-            width={640}
-            height={360}
-          />
-        )}
+        <Image
+          src={firstBreed.url}
+          alt={name}
+          width={firstBreed.width}
+          height={firstBreed.height}
+          className={styles.cat_img}
+        />
 
         <div className={styles.cat_info}>
           <div className={styles.cat_title}>
-            <h2>{breed?.name}</h2>
-            <h4>{breed?.description}</h4>
+            <h2>{name}</h2>
+            <h4>{description}</h4>
           </div>
 
           <div className={styles.cat_info_box}>
             <p>
               <span>Temperament:</span> <br />
-              {breed?.temperament}
+              {temperament}
             </p>
           </div>
           <div className={styles.cat_info_box}>
             <p>
-              <span>Origin:</span> {breed?.origin}
+              <span>Origin:</span> {origin}
             </p>
             <p>
-              <span>Weight:</span> {breed?.weight?.metric}
+              <span>Weight:</span> {weight.metric}
             </p>
             <p>
-              <span>Life span:</span> {breed?.life_span}
+              <span>Life span:</span> {life_span}
             </p>
           </div>
         </div>
