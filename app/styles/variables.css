@@ -10,6 +10,13 @@
   --btn-color: #8C8C8C;
   --input-color: #8C8C8C;
   --input-background: #fff;
+
+  --btn-background-primary: #FBE0DC;
+  --btn-background-secondary: #fff;
+
+  --card-background: rgba(255, 134, 142, 0.60);
+  --card-border: #FBE0DC;
+  --card-breed-title: #fff;
 }
 
 /* Dark mode theme  */
@@ -24,4 +31,11 @@
   --btn-color: #FF868E;
   --input-color: #fff;
   --input-background: rgba(255, 255, 255, 0.05);
+
+  --btn-background-primary: rgba(255, 134, 142, 0.20);
+  --btn-background-secondary: #1D1D1D;
+
+  --card-background: rgba(255, 134, 142, 0.60);
+  --card-border: rgba(255, 134, 142, 0.20);
+  --card-breed-title: #282828;
 } 

@@ -6,7 +6,7 @@ const getAll = (limit: number) => {
 };
 
 const get = (id: string) => {
-  return api.get(`/breeds/${id}`);
+  return api.get(`/images/search?breed_ids=${id}&limit=5`);
 };
 
 const BreedService = {

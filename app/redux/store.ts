@@ -1,9 +1,11 @@
 'use client'
 import { configureStore } from '@reduxjs/toolkit'
 import breedsReducer from './slices/breeds';
+import breedByIdReducer from './slices/breedById'
 
 const reducer = {
-  breeds: breedsReducer
+  breeds: breedsReducer,
+  breed: breedByIdReducer
 }
 
 const store = configureStore({

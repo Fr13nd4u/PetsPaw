@@ -7,6 +7,7 @@ import { AppDispatch } from "../redux/store";
 
 import styles from "./breeds.module.css";
 import { fetchBreeds } from "../redux/slices/breeds";
+import Breadcrumbs from "../components/breadcrumbs";
 
 interface IBreedsOptions {
   breeds: any;
@@ -36,7 +37,7 @@ const BreedsOptions: React.FC<IBreedsOptions> = ({ breeds }) => {
       value: "all",
       label: "All breeds",
     },
-    ...breeds.map((cat: any) => {
+    ...breeds?.map((cat: any) => {
       return {
         value: cat.id,
         label: cat.name,
@@ -65,7 +66,8 @@ const BreedsOptions: React.FC<IBreedsOptions> = ({ breeds }) => {
 
   return (
     <div className={styles.breeds_option}>
-      <div style={{ width: 193, height: 40, background: "#f00" }}></div>
+      <Breadcrumbs />
+
       <SelectInput
         options={newBreeds}
         value={breedOption}

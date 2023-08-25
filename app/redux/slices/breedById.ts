@@ -3,46 +3,45 @@ import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import BreedService from "../../services/BreedService";
 
 interface IState {
-  breeds: any;
+  breed: any;
   loading: boolean;
   error: string | null;
 }
 
 const initialState: IState = {
-  breeds: [],
+  breed: null,
   loading: false,
   error: null,
 };
 
-export const fetchBreeds = createAsyncThunk(
-  "breeds/fetch",
-  async (limit: number) => {
-    const res = await BreedService.getAll(limit);
+export const fetchBreedById = createAsyncThunk(
+  "breed",
+  async (id: string) => {
+    const res = await BreedService.get(id);
     return res.data;
   }
 );
 
-const breedsSlice = createSlice({
-  name: "breeds",
+const breedByIdSlice = createSlice({
+  name: "breed",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    // fetch all
-    builder.addCase(fetchBreeds.pending, (state) => {
+    builder.addCase(fetchBreedById.pending, (state) => {
       state.loading = true;
     })
-    builder.addCase(fetchBreeds.fulfilled, (state, action: PayloadAction) => {
+    builder.addCase(fetchBreedById.fulfilled, (state, action: PayloadAction) => {
       state.loading = false;
-      state.breeds = action.payload;
+      state.breed = action.payload;
       state.error = '';
     })
-    builder.addCase(fetchBreeds.rejected, (state) => {
+    builder.addCase(fetchBreedById.rejected, (state) => {
       state.loading = false;
-      state.breeds = [];
+      state.breed = null;
       state.error = 'Failed to get data.';
     })
   }
 })
 
-const { reducer } = breedsSlice;
+const { reducer } = breedByIdSlice;
 export default reducer;

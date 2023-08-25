@@ -1,0 +1,23 @@
+.breadcrumbs_block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.breadcrumbs_slug {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 30px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  color: var(--primary);
+  background: var(--btn-background-primary);
+  padding: 5px 30px;
+  border-radius: 10px;
+}
+
+.breadcrumbs_slug:last-child {
+  color: #fff;
+  background: var(--primary);
+}
