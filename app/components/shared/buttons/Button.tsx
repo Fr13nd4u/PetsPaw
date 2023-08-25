@@ -3,7 +3,7 @@ import styles from "./button.module.css";
 
 interface IButton {
   children: React.ReactNode;
-  onClick?: () => void;
+  onClick?: (e: any) => void;
   type: "primary" | "secondary";
 }
 

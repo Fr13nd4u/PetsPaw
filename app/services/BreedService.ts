@@ -1,7 +1,7 @@
 'use client'
 import api from '../api';
 
-const getAll = (limit: number) => {
+const getAll = (limit: number | string) => {
   return api.get(`/breeds?limit=${limit}`);
 };
 

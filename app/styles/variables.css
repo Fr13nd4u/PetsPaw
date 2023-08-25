@@ -10,6 +10,7 @@
   --btn-color: #8C8C8C;
   --input-color: #8C8C8C;
   --input-background: #fff;
+  --input-background-secondary: #F8F8F7;
 
   --btn-background-primary: #FBE0DC;
   --btn-background-secondary: #fff;
@@ -31,6 +32,8 @@
   --btn-color: #FF868E;
   --input-color: #fff;
   --input-background: rgba(255, 255, 255, 0.05);
+  --input-background-secondary: rgba(255, 255, 255, 0.05);
+
 
   --btn-background-primary: rgba(255, 134, 142, 0.20);
   --btn-background-secondary: #1D1D1D;

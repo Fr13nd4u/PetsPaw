@@ -33,8 +33,6 @@ const MasonryGallery: React.FC<IMasonryGallery> = ({ children }) => {
   const blocks = Math.ceil(itemCount / gridMapping.length);
 
   // Calculate the grid template rows based on the number of items
-  console.log((itemCount / 5) % 3);
-
   let gridTemplateRows: string;
   if ((itemCount / 5) % 3 === 1) {
     gridTemplateRows = "repeat(3, 1fr)";

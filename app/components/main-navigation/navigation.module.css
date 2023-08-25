@@ -113,4 +113,10 @@
   transition: .4s ease-in-out;
 }
 
+.active .card_btn {
+  color: #fff;
+  background: var(--primary);
+  transition: .4s ease-in-out;
+}
+
 /* CARD END */
