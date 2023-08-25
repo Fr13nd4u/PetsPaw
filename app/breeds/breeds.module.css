@@ -31,6 +31,14 @@
   fill: var(--btn-color);
 }
 
+.sort_btn_active {
+  background: var(--primary);
+}
+
+.sort_btn_active svg path {
+  fill: #fff;
+}
+
 .cat_card {
   position: relative;
   width: 100%;

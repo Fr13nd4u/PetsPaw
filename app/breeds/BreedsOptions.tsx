@@ -17,6 +17,7 @@ const BreedsOptions: React.FC = () => {
 
   const [limitOption, setLimitOption] = React.useState<number>(10);
   const [breedOption, setBreedOption] = React.useState<string>("");
+  const [orderOption, setOrderOption] = React.useState<string>("RAND");
 
   const handleLimitChange = (value: number) => {
     setLimitOption(value);
@@ -31,11 +32,11 @@ const BreedsOptions: React.FC = () => {
       fetchGallery({
         id: breedOption,
         limit: limitOption,
-        order: "RAND",
+        order: orderOption,
         mime_types: "jpg,gif,png",
       })
     );
-  }, [limitOption, breedOption]);
+  }, [limitOption, breedOption, orderOption]);
 
   React.useEffect(() => {
     dispatch(fetchBreeds("all"));
@@ -88,7 +89,12 @@ const BreedsOptions: React.FC = () => {
         value={limitOption}
         onChange={handleLimitChange}
       />
-      <button className={styles.sort_btn}>
+      <button
+        className={`${styles.sort_btn} ${
+          orderOption === "ASC" ? styles.sort_btn_active : ""
+        }`}
+        onClick={() => setOrderOption("ASC")}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
@@ -104,7 +110,12 @@ const BreedsOptions: React.FC = () => {
           />
         </svg>
       </button>
-      <button className={styles.sort_btn}>
+      <button
+        className={`${styles.sort_btn} ${
+          orderOption === "DESC" ? styles.sort_btn_active : ""
+        }`}
+        onClick={() => setOrderOption("DESC")}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
