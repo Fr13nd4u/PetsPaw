@@ -5,6 +5,7 @@ import { RootState } from "../../redux/store";
 import Image from "next/image";
 
 import styles from "./id-page.module.css";
+import CatCarousel from "./CatCarousel";
 
 const CatCard: React.FC = () => {
   const { breed, loading, error } = useSelector(
@@ -23,13 +24,7 @@ const CatCard: React.FC = () => {
 
     return (
       <>
-        <Image
-          src={firstBreed.url}
-          alt={name}
-          width={firstBreed.width}
-          height={firstBreed.height}
-          className={styles.cat_img}
-        />
+        <CatCarousel breeds={breed} />
 
         <div className={styles.cat_info}>
           <div className={styles.cat_title}>

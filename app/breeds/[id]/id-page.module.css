@@ -4,7 +4,7 @@
   border-radius: 20px;
   padding: 20px;
   background: var(--input-background);
-  overflow: hidden;
+  overflow: hidden; 
   overflow-y: auto;
 }
 
@@ -16,7 +16,7 @@
 }
 
 .cat_info {
-  margin-top: 25px;
+  margin-top: 51px;
   border-radius: 20px;
   border: 2px solid var(--card-border);
   padding: 75px 40px 40px;
