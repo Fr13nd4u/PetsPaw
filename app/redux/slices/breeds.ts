@@ -16,7 +16,7 @@ const initialState: IState = {
 
 export const fetchBreeds = createAsyncThunk(
   "breeds/fetch",
-  async (limit: number) => {
+  async (limit: number | string) => {
     const res = await BreedService.getAll(limit);
     return res.data;
   }

@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Button from "../shared/buttons/Button";
 import { useRouter, usePathname } from "next/navigation";

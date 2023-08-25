@@ -2,10 +2,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import breedsReducer from './slices/breeds';
 import breedByIdReducer from './slices/breedById'
+import galleryReducer from './slices/gallery'
 
 const reducer = {
   breeds: breedsReducer,
-  breed: breedByIdReducer
+  breed: breedByIdReducer,
+  gallery: galleryReducer
 }
 
 const store = configureStore({
