@@ -1,0 +1,32 @@
+.btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn svg path {
+  fill: var(--primary);
+}
+
+.btn_primary {
+  background: var(--btn-background-primary);
+}
+
+.btn_secondary {
+  background: var(--btn-background-secondary);
+}
+
+.btn:hover,
+.btn:active {
+  background: var(--primary);
+  transition: .4s ease-in-out;
+}
+
+.btn:hover svg path ,
+.btn:active svg path  {
+  fill: #fff;
+  transition: .4s ease-in-out;
+}
