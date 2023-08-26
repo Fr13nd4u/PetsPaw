@@ -8,3 +8,14 @@
   overflow: hidden; 
   overflow-y: auto;
 }
+
+.page h4 {
+  margin: 20px 0;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.page h4 span {
+  font-weight: 400;
+  color: var(--text-secondary);
+}

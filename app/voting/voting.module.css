@@ -8,3 +8,82 @@
   overflow: hidden; 
   overflow-y: auto;
 }
+
+.cat_img_block {
+  position: relative;
+}
+
+.cat_img {
+  width: 100%;
+  height: 360px;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+
+.cat_CTA {
+  display: flex;
+  gap: 4px;
+  border: 4px solid var(--card-breed-title);
+  background: #fff;
+  border-radius: 20px;
+  width: 250px;
+  height: 80px;
+  overflow: hidden;
+
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.cat_CTA span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+}
+
+.cat_CTA span svg path {
+  fill: #fff;
+  transition: .4s ease-in-out;
+}
+
+.likes {
+  background: #97EAB9;
+  transition: .4s ease-in-out;
+}
+.likes:hover {
+  background: rgba(151, 234, 185, 0.3);
+  transition: .4s ease-in-out;
+}
+.likes:hover svg path {
+  fill: #97EAB9;
+  transition: .4s ease-in-out;
+}
+
+.favourites {
+  background: var(--primary);
+  transition: .4s ease-in-out;
+}
+.favourites:hover {
+  background: rgba(255, 134, 142, 0.3);
+  transition: .4s ease-in-out;
+}
+.favourites:hover svg path {
+  fill: #FF868E;
+  transition: .4s ease-in-out;
+}
+
+.dislikes {
+  background: #FFD280;
+  transition: .4s ease-in-out;
+}
+.dislikes:hover {
+  background: rgba(255, 210, 128, 0.3);
+  transition: .4s ease-in-out;
+}
+.dislikes:hover svg path {
+  fill: #FFD280;
+  transition: .4s ease-in-out;
+}

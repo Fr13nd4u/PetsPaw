@@ -1,39 +1,55 @@
-"use client";
 import React from "react";
-import SearchInput from "../shared/inputs/SearchInput";
-import ButtonLink from "../shared/buttons/ButtonLink";
-import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../redux/store";
+import { fetchGallery } from "../redux/slices/gallery";
 
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../redux/store";
+import styles from "./voting.module.css";
+import { createVoting } from "../redux/slices/voting";
 
-import { fetchBreedById } from "@/app/redux/slices/breedById";
-
-import styles from "./navigation.module.css";
-
-interface IPageNavigation {}
-
-const PageNavigation: React.FC<IPageNavigation> = ({}) => {
-  const router = useRouter();
-  const [search, setSearch] = React.useState<string>("");
+const CatCTA: React.FC = () => {
+  const { gallery } = useSelector((state: RootState) => state.gallery);
   const dispatch = useDispatch<AppDispatch>();
 
-  const handleSearch = () => {
-    dispatch(fetchBreedById(search));
-    router.push("/search");
+  const handleLikes = () => {
+    dispatch(
+      createVoting({
+        image_id: gallery[0].id,
+        sub_id: "my-user-1234",
+        value: 1,
+      })
+    );
   };
 
-  return (
-    <div className={styles.nav}>
-      <SearchInput
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        onClick={handleSearch}
-        placeholder="Search for breeds by id"
-      />
+  const handleFavourites = () => {
+    console.log("handleFavourites: ", gallery[0].id);
+  };
 
-      <div className={styles.nav}>
-        <ButtonLink href="/likes">
+  const handleDislikes = () => {
+    dispatch(
+      createVoting({
+        image_id: gallery[0].id,
+        sub_id: "my-user-1234",
+        value: -1,
+      })
+    );
+  };
+
+  React.useEffect(() => {
+    dispatch(
+      fetchGallery({
+        id: "",
+        limit: 1,
+        order: "",
+        mime_types: "",
+      })
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  if (gallery) {
+    return (
+      <div className={styles.cat_CTA}>
+        <span className={styles.likes} onClick={handleLikes}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="30"
@@ -41,15 +57,22 @@ const PageNavigation: React.FC<IPageNavigation> = ({}) => {
             viewBox="0 0 30 30"
             fill="none"
           >
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M0 15C0 6.71573 6.71573 0 15 0C23.2843 0 30 6.71573 30 15C30 23.2843 23.2843 30 15 30C6.71573 30 0 23.2843 0 15ZM15 2C7.8203 2 2 7.8203 2 15C2 22.1797 7.8203 28 15 28C22.1797 28 28 22.1797 28 15C28 7.8203 22.1797 2 15 2ZM10 12H8V10H10V12ZM22 12H20V10H22V12ZM9.2 16.6L9.8 17.4C12.4 20.8667 17.6 20.8667 20.2 17.4L20.8 16.6L22.4 17.8L21.8 18.6C18.4 23.1333 11.6 23.1333 8.2 18.6L7.6 17.8L9.2 16.6Z"
-              fill="#FF868E"
-            />
+            <g clipPath="url(#clip0_1_1614)">
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M0 15C0 6.71573 6.71573 0 15 0C23.2843 0 30 6.71573 30 15C30 23.2843 23.2843 30 15 30C6.71573 30 0 23.2843 0 15ZM15 2C7.8203 2 2 7.8203 2 15C2 22.1797 7.8203 28 15 28C22.1797 28 28 22.1797 28 15C28 7.8203 22.1797 2 15 2ZM10 12H8V10H10V12ZM22 12H20V10H22V12ZM9.2 16.6L9.8 17.4C12.4 20.8667 17.6 20.8667 20.2 17.4L20.8 16.6L22.4 17.8L21.8 18.6C18.4 23.1333 11.6 23.1333 8.2 18.6L7.6 17.8L9.2 16.6Z"
+                fill="white"
+              />
+            </g>
+            <defs>
+              <clipPath id="clip0_1_1614">
+                <rect width="30" height="30" fill="white" />
+              </clipPath>
+            </defs>
           </svg>
-        </ButtonLink>
-        <ButtonLink href="/favourites">
+        </span>
+        <span className={styles.favourites} onClick={handleFavourites}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="30"
@@ -64,8 +87,8 @@ const PageNavigation: React.FC<IPageNavigation> = ({}) => {
               fill="#FF868E"
             />
           </svg>
-        </ButtonLink>
-        <ButtonLink href="/dislikes">
+        </span>
+        <span className={styles.dislikes} onClick={handleDislikes}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="30"
@@ -87,10 +110,10 @@ const PageNavigation: React.FC<IPageNavigation> = ({}) => {
               </clipPath>
             </defs>
           </svg>
-        </ButtonLink>
+        </span>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
-export default PageNavigation;
+export default CatCTA;

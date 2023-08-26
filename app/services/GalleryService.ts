@@ -11,7 +11,7 @@ const get = (
     order: string,
     mime_types: string
   ) => {
-  return api.get(`/images/search?breed_ids=${id}&limit=${limit}&order=${order}&mime_types=${mime_types}`)
+  return api.get(`/images/search?breed_ids=${id}&limit=${limit}&order=${order}&mime_types=${mime_types}&has_breeds=1`)
 };
 
 const GalleryService = {

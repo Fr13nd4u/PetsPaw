@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
+import Button from "../components/shared/buttons/Button";
 
 import styles from "./gallery.module.css";
-import Button from "../components/shared/buttons/Button";
 
 interface ICard {
   cat: any;

@@ -7,6 +7,7 @@ import { AppDispatch } from "../../redux/store";
 
 import styles from "./id-page.module.css";
 import { fetchBreedById } from "../../redux/slices/breedById";
+import PageNavigation from "../../components/page-navigation/PageNavigation";
 import CatCard from "./CatCard";
 
 interface IBreed {
@@ -24,10 +25,13 @@ const OneBreed: React.FC<IBreed> = ({ params: { id } }) => {
   }, []);
 
   return (
-    <div className={styles.page}>
-      <Breadcrumbs />
-      <CatCard />
-    </div>
+    <>
+      <PageNavigation />
+      <div className={styles.page}>
+        <Breadcrumbs />
+        <CatCard />
+      </div>
+    </>
   );
 };
 
