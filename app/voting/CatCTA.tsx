@@ -4,13 +4,20 @@ import { AppDispatch, RootState } from "../redux/store";
 import { fetchGallery } from "../redux/slices/gallery";
 
 import styles from "./voting.module.css";
+import { createVoting } from "../redux/slices/voting";
 
 const CatCTA: React.FC = () => {
   const { gallery } = useSelector((state: RootState) => state.gallery);
   const dispatch = useDispatch<AppDispatch>();
 
   const handleLikes = () => {
-    console.log("likes: ", gallery[0].id);
+    dispatch(
+      createVoting({
+        image_id: gallery[0].id,
+        sub_id: "my-user-1234",
+        value: 1,
+      })
+    );
   };
 
   const handleFavourites = () => {
@@ -18,7 +25,13 @@ const CatCTA: React.FC = () => {
   };
 
   const handleDislikes = () => {
-    console.log("handleDislikes: ", gallery[0].id);
+    dispatch(
+      createVoting({
+        image_id: gallery[0].id,
+        sub_id: "my-user-1234",
+        value: -1,
+      })
+    );
   };
 
   React.useEffect(() => {
@@ -30,6 +43,7 @@ const CatCTA: React.FC = () => {
         mime_types: "",
       })
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (gallery) {
