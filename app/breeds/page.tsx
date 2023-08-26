@@ -8,21 +8,22 @@ import { RootState } from "../redux/store";
 
 import styles from "./breeds.module.css";
 import BreedCard from "./BreedCard";
+import PageNavigation from "../components/page-navigation/PageNavigation";
 
 const Breeds: React.FC = () => {
-  const { breeds, loading, error } = useSelector(
-    (state: RootState) => state.breeds
+  const { gallery, loading, error } = useSelector(
+    (state: RootState) => state.gallery
   );
 
   const Gallery = () => {
-    if (loading) {
+    if (loading || !gallery) {
       return <h4>Loading</h4>;
     } else if (error) {
       return <div>{error}</div>;
-    } else {
+    } else if (gallery) {
       return (
         <MasonryGallery>
-          {breeds.map((cat: any) => (
+          {gallery.map((cat: any) => (
             <BreedCard key={cat.id} cat={cat} />
           ))}
         </MasonryGallery>
@@ -31,10 +32,13 @@ const Breeds: React.FC = () => {
   };
 
   return (
-    <div className={styles.page}>
-      <BreedsOptions breeds={breeds} />
-      <Gallery />
-    </div>
+    <>
+      <PageNavigation />
+      <div className={styles.page}>
+        <BreedsOptions />
+        <Gallery />
+      </div>
+    </>
   );
 };
 

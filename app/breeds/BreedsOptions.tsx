@@ -1,40 +1,56 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import React from "react";
 import SelectInput from "../components/shared/inputs/SelectInput";
-
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../redux/store";
-
-import styles from "./breeds.module.css";
-import { fetchBreeds } from "../redux/slices/breeds";
 import Breadcrumbs from "../components/breadcrumbs";
 
-interface IBreedsOptions {
-  breeds: any;
-}
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../redux/store";
 
-const BreedsOptions: React.FC<IBreedsOptions> = ({ breeds }) => {
+import { fetchBreeds } from "../redux/slices/breeds";
+import { fetchGallery } from "../redux/slices/gallery";
+import styles from "./breeds.module.css";
+const BreedsOptions: React.FC = () => {
+  const { breeds } = useSelector((state: RootState) => state.breeds);
   const dispatch = useDispatch<AppDispatch>();
 
-  const [limitOption, setLimitOption] = React.useState<number>(10);
-  const [breedOption, setBreedOption] = React.useState<string>("all");
+  const [options, setOptions] = React.useState({
+    limit: 10,
+    breed: "",
+    order: "RAND",
+  });
 
   const handleLimitChange = (value: number) => {
-    setLimitOption(value);
+    setOptions((prevOptions) => ({ ...prevOptions, limit: value }));
   };
 
   const handleBreedChange = (value: string) => {
-    setBreedOption(value);
+    setOptions((prevOptions) => ({ ...prevOptions, breed: value }));
+  };
+
+  const handleOrderChange = (value: string) => {
+    setOptions((prevOptions) => ({ ...prevOptions, order: value }));
   };
 
   React.useEffect(() => {
-    dispatch(fetchBreeds(limitOption));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [limitOption]);
+    const { limit, breed, order } = options;
+    dispatch(
+      fetchGallery({
+        id: breed,
+        limit,
+        order,
+        mime_types: "jpg,gif,png",
+      })
+    );
+  }, [options]);
+
+  React.useEffect(() => {
+    dispatch(fetchBreeds("all"));
+  }, []);
 
   const newBreeds = [
     {
-      value: "all",
+      value: "",
       label: "All breeds",
     },
     ...breeds?.map((cat: any) => {
@@ -64,22 +80,42 @@ const BreedsOptions: React.FC<IBreedsOptions> = ({ breeds }) => {
     },
   ];
 
+  const orders = [
+    {
+      value: "RAND",
+      label: "Random",
+    },
+    {
+      value: "DESC",
+      label: "Desc",
+    },
+    {
+      value: "ASC",
+      label: "Asc",
+    },
+  ];
+
   return (
     <div className={styles.breeds_option}>
       <Breadcrumbs />
 
       <SelectInput
         options={newBreeds}
-        value={breedOption}
+        value={options.breed}
         onChange={handleBreedChange}
         className={styles.breeds_select}
       />
       <SelectInput
         options={limits}
-        value={limitOption}
+        value={options.limit}
         onChange={handleLimitChange}
       />
-      <button className={styles.sort_btn}>
+      <button
+        className={`${styles.sort_btn} ${
+          options.order === "ASC" ? styles.sort_btn_active : ""
+        }`}
+        onClick={() => handleOrderChange("ASC")}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
@@ -95,7 +131,12 @@ const BreedsOptions: React.FC<IBreedsOptions> = ({ breeds }) => {
           />
         </svg>
       </button>
-      <button className={styles.sort_btn}>
+      <button
+        className={`${styles.sort_btn} ${
+          options.order === "DESC" ? styles.sort_btn_active : ""
+        }`}
+        onClick={() => handleOrderChange("DESC")}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"

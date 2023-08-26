@@ -1,10 +1,10 @@
 import React from "react";
-import Breadcrumbs from "../components/breadcrumbs";
 import PageNavigation from "../components/page-navigation/PageNavigation";
+import Breadcrumbs from "../components/breadcrumbs";
 
-import styles from "./voting.module.css";
+import styles from "./search.module.css";
 
-const Voting: React.FC = () => {
+const Search: React.FC = () => {
   return (
     <>
       <PageNavigation />
@@ -15,4 +15,4 @@ const Voting: React.FC = () => {
   );
 };
 
-export default Voting;
+export default Search;
