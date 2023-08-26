@@ -4,6 +4,11 @@ import SearchInput from "../shared/inputs/SearchInput";
 import ButtonLink from "../shared/buttons/ButtonLink";
 import { useRouter } from "next/navigation";
 
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../redux/store";
+
+import { fetchBreedById } from "@/app/redux/slices/breedById";
+
 import styles from "./navigation.module.css";
 
 interface IPageNavigation {}
@@ -11,10 +16,10 @@ interface IPageNavigation {}
 const PageNavigation: React.FC<IPageNavigation> = ({}) => {
   const router = useRouter();
   const [search, setSearch] = React.useState<string>("");
-
-  // fetchBreedById
+  const dispatch = useDispatch<AppDispatch>();
 
   const handleSearch = () => {
+    dispatch(fetchBreedById(search));
     router.push("/search");
     console.log("search: ", search);
   };

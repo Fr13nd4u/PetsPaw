@@ -2,7 +2,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
-import Image from "next/image";
 
 import styles from "./id-page.module.css";
 import CatCarousel from "./CatCarousel";
