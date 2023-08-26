@@ -1,0 +1,19 @@
+.search {
+  width: 100%;
+  position: relative;
+}
+
+.search_input {
+  border-radius: 20px;
+  background: var(--input-background);
+  font-size: 20px;
+  line-height: 30px;
+  padding: 15px 20px;
+  width: 100%;
+}
+
+.search button {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}

@@ -2,6 +2,7 @@
 import React from "react";
 import Breadcrumbs from "../components/breadcrumbs";
 import MasonryGallery from "../components/shared/masonry-gallery/MasonryGallery";
+import PageNavigation from "../components/page-navigation/PageNavigation";
 
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
@@ -32,11 +33,14 @@ const Gallery: React.FC = () => {
   };
 
   return (
-    <div className={styles.page}>
-      <Breadcrumbs />
-      <GalleryForm />
-      <CatsGallery />
-    </div>
+    <>
+      <PageNavigation />
+      <div className={styles.page}>
+        <Breadcrumbs />
+        <GalleryForm />
+        <CatsGallery />
+      </div>{" "}
+    </>
   );
 };
 

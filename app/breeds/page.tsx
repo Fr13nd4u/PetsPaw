@@ -8,6 +8,7 @@ import { RootState } from "../redux/store";
 
 import styles from "./breeds.module.css";
 import BreedCard from "./BreedCard";
+import PageNavigation from "../components/page-navigation/PageNavigation";
 
 const Breeds: React.FC = () => {
   const { gallery, loading, error } = useSelector(
@@ -31,10 +32,13 @@ const Breeds: React.FC = () => {
   };
 
   return (
-    <div className={styles.page}>
-      <BreedsOptions />
-      <Gallery />
-    </div>
+    <>
+      <PageNavigation />
+      <div className={styles.page}>
+        <BreedsOptions />
+        <Gallery />
+      </div>
+    </>
   );
 };
 
