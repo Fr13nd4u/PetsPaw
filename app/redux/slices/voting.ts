@@ -16,8 +16,8 @@ const initialState: IState = {
 
 export const fetchVotings = createAsyncThunk(
   "voting/fetch",
-  async () => {
-    const res = await VotingService.getAll();
+  async (sub_id: any ) => {
+    const res = await VotingService.getAll(sub_id);
     return res.data;
   }
 );
