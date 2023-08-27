@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Breadcrumbs from "../components/breadcrumbs";
+import GalleryOptions from "./GalleryOptions";
 import MasonryGallery from "../components/shared/masonry-gallery/MasonryGallery";
 import PageNavigation from "../components/page-navigation/PageNavigation";
 
@@ -20,9 +20,13 @@ const Gallery: React.FC = () => {
   const CatsGallery = () => {
     if (loading || !gallery) {
       return <Loading />;
-    } else if (error) {
+    }
+
+    if (error) {
       return <div>{error}</div>;
-    } else if (gallery) {
+    }
+
+    if (gallery) {
       return (
         <MasonryGallery>
           {gallery.map((cat: any) => (
@@ -37,7 +41,7 @@ const Gallery: React.FC = () => {
     <>
       <PageNavigation />
       <div className={styles.page}>
-        <Breadcrumbs />
+        <GalleryOptions />
         <GalleryForm />
         <CatsGallery />
       </div>{" "}

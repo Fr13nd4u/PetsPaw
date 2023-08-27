@@ -9,6 +9,37 @@
   overflow-y: auto;
 }
 
+.gallery_option {
+  display: flex;
+  justify-content: space-between;
+}
+
+.upload_btn {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  padding: 12px 30px;
+  border-radius: 10px;
+  background: var(--btn-background-primary);
+  color: var(--primary);
+
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px; 
+  letter-spacing: 2px;
+}
+
+.upload_btn:active {
+  background: var(--primary);
+  color: #fff;
+}
+
+.upload_btn:active svg path {
+  fill: #fff;
+}
+
 .cat_card {
   position: relative;
   width: 100%;
@@ -81,3 +112,112 @@
   text-transform: uppercase;
   margin-left: 15px;
 }
+
+/* FORM END */
+
+/* UPLOAD FORM START*/
+
+.upload_form h2 {
+  font-size: 36px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.upload_form h4 {
+  color: var(--text-secondary);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.upload_form a {
+  color: var(--primary);
+}
+
+.upload_form form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 640px;
+  height: 320px;
+  cursor: pointer;
+
+  border-radius: 20px;
+  border: 2px dashed var(--btn-background-primary);
+  background: var(--input-background);
+  margin-bottom: 20px;
+}
+
+.upload_form_error form {
+  border: 2px dashed var(--primary);
+  background: rgba(255, 134, 142, 0.20);
+}
+
+.upload_form_content {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.upload_form_content svg {
+  position: absolute;
+  top: 50%;  
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.upload_form_content svg path {
+  fill: var(--input-background-secondary)
+}
+
+.upload_form_content_text {
+  z-index: 1;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 30px;
+}
+
+.upload_form_content_text span {
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.upload_form_btn {
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 12px 30px;
+  background: var(--primary);
+  color: #FFF;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px; 
+  letter-spacing: 2px;
+  width: 180px;
+  margin: 0 auto;
+}
+
+.info_box {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--input-background);
+  border-radius: 10px;
+  padding: 18px 25px;
+  margin-bottom: 10px;
+}
+
+.info_text {
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+/* UPLOAD FORM END*/
