@@ -2,9 +2,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
+import CatCarousel from "./CatCarousel";
+import Loading from "../../components/shared/loading/Loading";
 
 import styles from "./id-page.module.css";
-import CatCarousel from "./CatCarousel";
 
 const CatCard: React.FC = () => {
   const { breed, loading, error } = useSelector(
@@ -12,7 +13,7 @@ const CatCard: React.FC = () => {
   );
 
   if (loading || !breed) {
-    return <h4>Loading</h4>;
+    return <Loading />;
   } else if (error) {
     return <div>{error}</div>;
   } else if (breed) {

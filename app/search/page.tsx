@@ -7,6 +7,7 @@ import MasonryGallery from "../components/shared/masonry-gallery/MasonryGallery"
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 
+import Loading from "../components/shared/loading/Loading";
 import BreedCard from "../breeds/BreedCard";
 import styles from "./search.module.css";
 
@@ -16,10 +17,12 @@ const Search: React.FC = () => {
   );
 
   const Gallery = () => {
-    if (loading || !breed) {
-      return <h4>Loading</h4>;
+    if (loading) {
+      return <Loading />;
     } else if (error) {
       return <div>{error}</div>;
+    } else if (!breed || breed.length === 0) {
+      return <p className={styles.nodata}>No item found</p>;
     } else if (breed) {
       return (
         <>

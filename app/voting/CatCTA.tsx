@@ -6,6 +6,7 @@ import { fetchGallery } from "../redux/slices/gallery";
 
 import styles from "./voting.module.css";
 import { createVoting } from "../redux/slices/voting";
+import { createFavourite } from "../redux/slices/favourites";
 
 const CatCTA: React.FC = () => {
   const { gallery } = useSelector((state: RootState) => state.gallery);
@@ -30,7 +31,20 @@ const CatCTA: React.FC = () => {
   };
 
   const handleFavourites = () => {
-    console.log("handleFavourites: ", gallery[0].id);
+    dispatch(
+      createFavourite({
+        image_id: gallery[0].id,
+        sub_id: process.env.NEXT_PUBLIC_USER_ID,
+      })
+    );
+    dispatch(
+      fetchGallery({
+        id: "",
+        limit: 1,
+        order: "",
+        mime_types: "",
+      })
+    );
   };
 
   const handleDislikes = () => {

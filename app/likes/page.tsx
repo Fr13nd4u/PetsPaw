@@ -8,6 +8,7 @@ import VotingCard from "../components/voting-card/VotingCard";
 import { fetchVotings, removeVoting } from "../redux/slices/voting";
 import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "../redux/store";
+import Loading from "../components/shared/loading/Loading";
 import styles from "./likes.module.css";
 
 const Likes: React.FC = () => {
@@ -18,7 +19,7 @@ const Likes: React.FC = () => {
 
   const Gallery = () => {
     if (loading || !voting) {
-      return <h4>Loading</h4>;
+      return <Loading />;
     } else if (error) {
       return <div>{error}</div>;
     } else if (voting) {
