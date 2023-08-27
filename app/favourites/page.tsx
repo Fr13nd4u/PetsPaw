@@ -23,9 +23,13 @@ const Favourites: React.FC = () => {
   const Gallery = () => {
     if (loading || !favourites) {
       return <Loading />;
-    } else if (error) {
+    }
+
+    if (error) {
       return <div>{error}</div>;
-    } else if (favourites) {
+    }
+
+    if (favourites) {
       if (favourites.length === 0) {
         return <p className={styles.nodata}>No item found</p>;
       }

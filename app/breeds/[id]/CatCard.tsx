@@ -14,9 +14,13 @@ const CatCard: React.FC = () => {
 
   if (loading || !breed) {
     return <Loading />;
-  } else if (error) {
+  }
+
+  if (error) {
     return <div>{error}</div>;
-  } else if (breed) {
+  }
+
+  if (breed) {
     const firstBreed = breed[0];
 
     const { name, description, temperament, origin, weight, life_span } =

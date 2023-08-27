@@ -19,9 +19,13 @@ const Breeds: React.FC = () => {
   const Gallery = () => {
     if (loading || !gallery) {
       return <Loading />;
-    } else if (error) {
+    }
+
+    if (error) {
       return <div>{error}</div>;
-    } else if (gallery) {
+    }
+
+    if (gallery) {
       return (
         <MasonryGallery>
           {gallery.map((cat: any) => (

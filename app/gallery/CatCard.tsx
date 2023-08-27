@@ -5,6 +5,7 @@ import Button from "../components/shared/buttons/Button";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../redux/store";
 import { createFavourite } from "../redux/slices/favourites";
+import { setUserActions } from "../redux/slices/userActions";
 import styles from "./gallery.module.css";
 
 interface ICard {
@@ -20,6 +21,15 @@ const CatCard: React.FC<ICard> = ({ cat }) => {
       createFavourite({
         image_id: id,
         sub_id: process.env.NEXT_PUBLIC_USER_ID,
+      })
+    );
+
+    dispatch(
+      setUserActions({
+        img_id: cat.id,
+        time: Date.now(),
+        type: "favourites",
+        text: `was added to Favourites`,
       })
     );
   };

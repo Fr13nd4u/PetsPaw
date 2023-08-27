@@ -7,6 +7,7 @@ import galleryReducer from './slices/gallery'
 import votingReducer from './slices/voting'
 import favouritesReducer from './slices/favourites'
 import userActionsReducer from './slices/userActions'
+import uploadReducer from './slices/upload'
 
 const reducer = {
   breeds: breedsReducer,
@@ -14,7 +15,8 @@ const reducer = {
   gallery: galleryReducer,
   voting: votingReducer,
   favourites: favouritesReducer,
-  userActions: userActionsReducer
+  userActions: userActionsReducer,
+  upload: uploadReducer,
 }
 
 const store = configureStore({

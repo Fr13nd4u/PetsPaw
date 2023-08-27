@@ -18,6 +18,7 @@
   --card-background: rgba(255, 134, 142, 0.60);
   --card-border: #FBE0DC;
   --card-breed-title: #fff;
+  --modal-background: #F8F8F7;
 }
 
 /* Dark mode theme  */
@@ -34,11 +35,11 @@
   --input-background: rgba(255, 255, 255, 0.05);
   --input-background-secondary: rgba(255, 255, 255, 0.05);
 
-
   --btn-background-primary: rgba(255, 134, 142, 0.20);
   --btn-background-secondary: #1D1D1D;
 
   --card-background: rgba(255, 134, 142, 0.60);
   --card-border: rgba(255, 134, 142, 0.20);
   --card-breed-title: #282828;
+  --modal-background: #282828;
 } 

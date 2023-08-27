@@ -19,11 +19,17 @@ const Search: React.FC = () => {
   const Gallery = () => {
     if (loading) {
       return <Loading />;
-    } else if (error) {
+    }
+
+    if (error) {
       return <div>{error}</div>;
-    } else if (!breed || breed.length === 0) {
+    }
+
+    if (!breed || breed.length === 0) {
       return <p className={styles.nodata}>No item found</p>;
-    } else if (breed) {
+    }
+
+    if (breed) {
       return (
         <>
           <h4>

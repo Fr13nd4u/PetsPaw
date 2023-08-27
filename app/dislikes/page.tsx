@@ -23,9 +23,13 @@ const Dislikes: React.FC = () => {
   const Gallery = () => {
     if (loading || !voting) {
       return <Loading />;
-    } else if (error) {
+    }
+
+    if (error) {
       return <div>{error}</div>;
-    } else if (voting) {
+    }
+
+    if (voting) {
       const filterVoting = voting.filter((cat: any) => cat.value === -1);
 
       if (filterVoting.length === 0) {
