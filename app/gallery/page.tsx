@@ -9,6 +9,7 @@ import { RootState } from "../redux/store";
 
 import CatCard from "./CatCard";
 import GalleryForm from "./GalleryForm";
+import Loading from "../components/shared/loading/Loading";
 import styles from "./gallery.module.css";
 
 const Gallery: React.FC = () => {
@@ -18,7 +19,7 @@ const Gallery: React.FC = () => {
 
   const CatsGallery = () => {
     if (loading || !gallery) {
-      return <h4>Loading</h4>;
+      return <Loading />;
     } else if (error) {
       return <div>{error}</div>;
     } else if (gallery) {

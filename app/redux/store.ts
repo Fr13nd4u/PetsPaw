@@ -5,12 +5,16 @@ import breedsReducer from './slices/breeds';
 import breedByIdReducer from './slices/breedById'
 import galleryReducer from './slices/gallery'
 import votingReducer from './slices/voting'
+import favouritesReducer from './slices/favourites'
+import userActionsReducer from './slices/userActions'
 
 const reducer = {
   breeds: breedsReducer,
   breed: breedByIdReducer,
   gallery: galleryReducer,
-  voting: votingReducer
+  voting: votingReducer,
+  favourites: favouritesReducer,
+  userActions: userActionsReducer
 }
 
 const store = configureStore({

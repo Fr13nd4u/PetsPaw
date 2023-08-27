@@ -2,6 +2,9 @@ import React from "react";
 import Image from "next/image";
 import Button from "../components/shared/buttons/Button";
 
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../redux/store";
+import { createFavourite } from "../redux/slices/favourites";
 import styles from "./gallery.module.css";
 
 interface ICard {
@@ -9,10 +12,16 @@ interface ICard {
 }
 
 const CatCard: React.FC<ICard> = ({ cat }) => {
+  const dispatch = useDispatch<AppDispatch>();
   const { url, width, height, id } = cat;
 
   const handleFavourites = () => {
-    console.log("id: ", id);
+    dispatch(
+      createFavourite({
+        image_id: id,
+        sub_id: process.env.NEXT_PUBLIC_USER_ID,
+      })
+    );
   };
 
   return (

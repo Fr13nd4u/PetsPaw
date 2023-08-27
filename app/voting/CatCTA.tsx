@@ -6,6 +6,8 @@ import { fetchGallery } from "../redux/slices/gallery";
 
 import styles from "./voting.module.css";
 import { createVoting } from "../redux/slices/voting";
+import { createFavourite } from "../redux/slices/favourites";
+import { setUserActions } from "../redux/slices/userActions";
 
 const CatCTA: React.FC = () => {
   const { gallery } = useSelector((state: RootState) => state.gallery);
@@ -19,6 +21,7 @@ const CatCTA: React.FC = () => {
         value: 1,
       })
     );
+
     dispatch(
       fetchGallery({
         id: "",
@@ -27,10 +30,42 @@ const CatCTA: React.FC = () => {
         mime_types: "",
       })
     );
+
+    dispatch(
+      setUserActions({
+        img_id: gallery[0].id,
+        time: Date.now(),
+        type: "like",
+        text: `was added to Likes`,
+      })
+    );
   };
 
   const handleFavourites = () => {
-    console.log("handleFavourites: ", gallery[0].id);
+    dispatch(
+      createFavourite({
+        image_id: gallery[0].id,
+        sub_id: process.env.NEXT_PUBLIC_USER_ID,
+      })
+    );
+
+    dispatch(
+      fetchGallery({
+        id: "",
+        limit: 1,
+        order: "",
+        mime_types: "",
+      })
+    );
+
+    dispatch(
+      setUserActions({
+        img_id: gallery[0].id,
+        time: Date.now(),
+        type: "favourites",
+        text: `was added to Favourites`,
+      })
+    );
   };
 
   const handleDislikes = () => {
@@ -41,12 +76,22 @@ const CatCTA: React.FC = () => {
         value: -1,
       })
     );
+
     dispatch(
       fetchGallery({
         id: "",
         limit: 1,
         order: "",
         mime_types: "",
+      })
+    );
+
+    dispatch(
+      setUserActions({
+        img_id: gallery[0].id,
+        time: Date.now(),
+        type: "dislike",
+        text: `was added to Dislikes`,
       })
     );
   };

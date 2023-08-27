@@ -6,8 +6,10 @@ import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import Image from "next/image";
 
-import styles from "./voting.module.css";
 import CatCTA from "./CatCTA";
+import UserActions from "../components/user-actions/UserActions";
+
+import styles from "./voting.module.css";
 
 const Voting: React.FC = () => {
   const { gallery } = useSelector((state: RootState) => state.gallery);
@@ -30,6 +32,8 @@ const Voting: React.FC = () => {
           )}
           <CatCTA />
         </div>
+
+        <UserActions />
       </div>
     </>
   );

@@ -4,8 +4,11 @@ import PageNavigation from "../components/page-navigation/PageNavigation";
 import Breadcrumbs from "../components/breadcrumbs";
 import MasonryGallery from "../components/shared/masonry-gallery/MasonryGallery";
 import VotingCard from "../components/voting-card/VotingCard";
+import Loading from "../components/shared/loading/Loading";
+import UserActions from "../components/user-actions/UserActions";
 
 import { fetchVotings, removeVoting } from "../redux/slices/voting";
+import { setUserActions } from "../redux/slices/userActions";
 import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "../redux/store";
 
@@ -19,7 +22,7 @@ const Dislikes: React.FC = () => {
 
   const Gallery = () => {
     if (loading || !voting) {
-      return <h4>Loading</h4>;
+      return <Loading />;
     } else if (error) {
       return <div>{error}</div>;
     } else if (voting) {
@@ -34,8 +37,17 @@ const Dislikes: React.FC = () => {
           {filterVoting.map((cat: any) => {
             const handleUndislike = async () => {
               await dispatch(removeVoting(cat.id));
+              dispatch(
+                setUserActions({
+                  img_id: cat.id,
+                  time: Date.now(),
+                  type: "dislike",
+                  text: `was removed from Dislikes`,
+                })
+              );
               dispatch(fetchVotings(process.env.NEXT_PUBLIC_USER_ID));
             };
+
             return (
               <VotingCard
                 key={cat.id}
@@ -61,6 +73,7 @@ const Dislikes: React.FC = () => {
         <Breadcrumbs />
         <hr />
         <Gallery />
+        <UserActions />
       </div>
     </>
   );
