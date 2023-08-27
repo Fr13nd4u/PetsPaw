@@ -1,8 +1,8 @@
 'use client'
 import api from '../api';
 
-const getAll = () => {
-  return api.get(`/votes`);
+const getAll = (sub_id: any) => {
+  return api.get(`/votes?sub_id=${sub_id}`);
 };
 
 const create = (data: {

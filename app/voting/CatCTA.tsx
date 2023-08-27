@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../redux/store";
@@ -14,8 +15,16 @@ const CatCTA: React.FC = () => {
     dispatch(
       createVoting({
         image_id: gallery[0].id,
-        sub_id: "my-user-1234",
+        sub_id: process.env.NEXT_PUBLIC_USER_ID,
         value: 1,
+      })
+    );
+    dispatch(
+      fetchGallery({
+        id: "",
+        limit: 1,
+        order: "",
+        mime_types: "",
       })
     );
   };
@@ -28,8 +37,16 @@ const CatCTA: React.FC = () => {
     dispatch(
       createVoting({
         image_id: gallery[0].id,
-        sub_id: "my-user-1234",
+        sub_id: process.env.NEXT_PUBLIC_USER_ID,
         value: -1,
+      })
+    );
+    dispatch(
+      fetchGallery({
+        id: "",
+        limit: 1,
+        order: "",
+        mime_types: "",
       })
     );
   };

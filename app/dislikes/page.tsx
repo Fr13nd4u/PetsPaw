@@ -32,9 +32,9 @@ const Dislikes: React.FC = () => {
       return (
         <MasonryGallery>
           {filterVoting.map((cat: any) => {
-            const handleUndislike = () => {
-              dispatch(removeVoting(cat.id));
-              dispatch(fetchVotings());
+            const handleUndislike = async () => {
+              await dispatch(removeVoting(cat.id));
+              dispatch(fetchVotings(process.env.NEXT_PUBLIC_USER_ID));
             };
             return (
               <VotingCard
@@ -50,7 +50,7 @@ const Dislikes: React.FC = () => {
   };
 
   React.useEffect(() => {
-    dispatch(fetchVotings());
+    dispatch(fetchVotings(process.env.NEXT_PUBLIC_USER_ID));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
