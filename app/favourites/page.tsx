@@ -4,11 +4,13 @@ import PageNavigation from "../components/page-navigation/PageNavigation";
 import Breadcrumbs from "../components/breadcrumbs";
 import MasonryGallery from "../components/shared/masonry-gallery/MasonryGallery";
 import VotingCard from "../components/voting-card/VotingCard";
+import Loading from "../components/shared/loading/Loading";
+import UserActions from "../components/user-actions/UserActions";
 
 import { fetchFavourites, removeFavourite } from "../redux/slices/favourites";
+import { setUserActions } from "../redux/slices/userActions";
 import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "../redux/store";
-import Loading from "../components/shared/loading/Loading";
 
 import styles from "./favourites.module.css";
 
@@ -33,8 +35,17 @@ const Favourites: React.FC = () => {
           {favourites.map((cat: any) => {
             const handleUnFavourites = async () => {
               await dispatch(removeFavourite(cat.id));
+              dispatch(
+                setUserActions({
+                  img_id: cat.id,
+                  time: Date.now(),
+                  type: "favourites",
+                  text: `was removed from Favourites`,
+                })
+              );
               dispatch(fetchFavourites(process.env.NEXT_PUBLIC_USER_ID));
             };
+
             return (
               <VotingCard
                 key={cat.id}
@@ -60,6 +71,7 @@ const Favourites: React.FC = () => {
         <Breadcrumbs />
         <hr />
         <Gallery />
+        <UserActions />
       </div>
     </>
   );

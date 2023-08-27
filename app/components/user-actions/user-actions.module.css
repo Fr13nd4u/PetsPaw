@@ -1,0 +1,30 @@
+.info_box {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--input-background-secondary);
+  border-radius: 10px;
+  padding: 18px 25px;
+  margin-bottom: 10px;
+}
+
+.info_box svg {
+  margin-left: auto;
+}
+
+.info_time {
+  padding: 3px 10px;
+  border-radius: 5px;
+  background: var(--btn-background-secondary);
+}
+
+.info_text {
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.info_text span {
+  color: var(--text-primary);
+  font-weight: 500;
+}
